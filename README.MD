@@ -19,31 +19,36 @@
 ## Use
 Code Sample:
 
-Init
+Init 
+初始化
 		
 	string path = @"d:\model\";	//face models directory path
     SeetafaceHelper.SetModelDirectory(Encoding.Default.GetBytes(path));
     SeetafaceHelper.Init();
 
-FaceDetect
+FaceDetect 
+人脸检测
 
 	SeetafaceHelper.DetectFaces(
         string imagePath,
         StringBuilder detectJsonResult
     );
 
-FaceAlignment
+FaceAlignment 
+人脸对齐
 
 	SeetafaceHelper.Alignment(
         string imagePath,
         StringBuilder alignmentResult
     );
 
-ExtractFeature
+ExtractFeature 
+提取特征
 
 	SeetafaceHelper.ExtractFeature(string imagePath, AlignmentResult alignmentResult, float[] feats);
 
-Calculating Similarity
+Calculating Similarity 
+计算相似度
 
 	float[] feat1 = new floar[2048];
 	float[] feat2 = new floar[2048];
@@ -56,5 +61,5 @@ Calculating Similarity
 		//.....
 	}
 
-## running result
+## running result 运行结果
 ![Screenshot](result.png)
