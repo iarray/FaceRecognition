@@ -1,9 +1,9 @@
 # NSeetaface
 
 ## Library
-[Seetaface](https://github.com/iarray/SeetaFaceEngine.Net) 
-[Seetaface .NetDemo](https://github.com/iarray/SeetaFaceEngine.Net) 
-[OpenCV 2.4.12](https://opencv.org/releases.html)
+* [Seetaface](https://github.com/iarray/SeetaFaceEngine.Net) 
+* [Seetaface .NetDemo](https://github.com/iarray/SeetaFaceEngine.Net) 
+* [OpenCV 2.4.12](https://opencv.org/releases.html)
 
 ## Download the face models
 
@@ -18,11 +18,43 @@
 
 ## Use
 Code Sample:
+
+Init
 		
 	string path = @"d:\model\";	//face models directory path
     SeetafaceHelper.SetModelDirectory(Encoding.Default.GetBytes(path));
     SeetafaceHelper.Init();
 
+FaceDetect
+
+	SeetafaceHelper.DetectFaces(
+        string imagePath,
+        StringBuilder detectJsonResult
+    );
+
+FaceAlignment
+
+	SeetafaceHelper.Alignment(
+        string imagePath,
+        StringBuilder alignmentResult
+    );
+
+ExtractFeature
+
+	SeetafaceHelper.ExtractFeature(string imagePath, AlignmentResult alignmentResult, float[] feats);
+
+Calculating Similarity
+
+	float[] feat1 = new floar[2048];
+	float[] feat2 = new floar[2048];
+	
+	SeetafaceHelper.ExtractFeature(@"d:\1.jpg", alignmentResult, feat1);
+	SeetafaceHelper.ExtractFeature(@"d:\2.jpg", alignmentResult, feat2);
+
+	double sim = SeetafaceHelper.CalcSimilarity(feat1, feat2)
+	if(sim > 0.6){
+		//.....
+	}
 
 ## running result
-![Screenshot](result.jpg)
+![Screenshot](result.png)
